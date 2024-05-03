@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using System.Web;
+<div id="ordersGrid"></div>
+<button id="memCached">
+    Get Data With Memcached
+</button>
+<button id="redis">
+    Get Data With Redis
+</button>
+@section scripts {
+    <script>
+        var url = '@Url.Action("GetData", "Home")';
+        $.ajax({
+            url: url,
+            type: "GET",
+            success: function (data) {
+                initGrid(data)
+            },
+            error: function (xhr) {
+                alert('error');
+            }
+        })
+        function initGrid(data) {
+            var gridDataSource = new kendo.data.DataSource({
+                data: data,
+                schema: {
+                    model: {
+                        fields: {
+                            OrderID: { type: "number" },
+                            Freight: { type: "number" },
+                            OrderDate: { type: "date" },
+                            ShipCountry: { type: "string" },
+                            ShipCity: { type: "string" },
+                            Caching: { type: "string" }
+                        }
+                    }
+                },
+                pageSize: 10,
+                sort: {
+                    field: "OrderDate",
+                    dir: "desc"
+                }
+            });
+            $("#ordersGrid").kendoGrid({
+                dataSource: gridDataSource,
+                height: 400,
+                pageable: true,
+                sortable: true,
+                filterable: true,
+                columns: [{
+                    field: "OrderID",
+                    title: "Order ID",
+                    width: 160
+                }, {
+                    field: "OrderDate",
+                    title: "Order Date",
+                    width: 200,
+                    format: "{0:dd MMMM yyyy}"
+                }, {
+                    field: "ShipCountry",
+                    title: "Ship Country"
+                }, {
+                    field: "ShipCity",
+                    title: "Ship City"
+                }, {
+                    field: "Caching",
+                    title: "Caching"
+                    }
+                ]
+            });
+        }
+
+        $("#memCached").on("click", () => {
+            $.ajax({
+                url: '@Url.Action("GetDataWithMemCached","Home")',
+                type: "GET",
+                success: function (data) {
+                    var grid = $("#ordersGrid").data("kendoGrid");
+                    grid.dataSource.data(data);
+                    grid.refresh();
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            })
+        });
+        $("#redis").on("click", () => {
+            $.ajax({
+                url: '@Url.Action("GetData","Home")',
+                type: "GET",
+                success: function (data) {
+                    var grid = $("#ordersGrid").data("kendoGrid");
+                    grid.dataSource.data(data);
+                    grid.refresh();
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            })
+        });
+
+
+    </script>    
+}

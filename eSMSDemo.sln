@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34729.46
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eSMSDemo", "eSMSDemo\eSMSDemo.csproj", "{5373A86C-9C1E-4EC5-B57E-8A16615E8C1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5373A86C-9C1E-4EC5-B57E-8A16615E8C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5373A86C-9C1E-4EC5-B57E-8A16615E8C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5373A86C-9C1E-4EC5-B57E-8A16615E8C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5373A86C-9C1E-4EC5-B57E-8A16615E8C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D2DD89A-2D84-4978-A759-A32ABBD95BB2}
+	EndGlobalSection
+EndGlobal
